@@ -1,20 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from "react";
+import { Navigation } from "./components/Navigation.js";
+import CounterContext from "./context/CounterContext.js";
 
 export default function App() {
+  const [counter, setCounter] = useState(0);
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <CounterContext.Provider value={{ counter, setCounter }}>
+        <Navigation />
+      </CounterContext.Provider>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
